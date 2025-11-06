@@ -6,6 +6,14 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  optimizeDeps: {
+    include: ["gsap"],
+  },
+  build: {
+    commonjsOptions: {
+      include: [/gsap/, /node_modules/],
+    },
+  },
   plugins: [
     tailwindcss(),
     reactRouter(),
