@@ -1,15 +1,113 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: var(--color-orange-100) !important;
+  color: var(--color-slate-950) !important;
+}
+
+::selection {
+  background: color-mix(
+    in oklab,
+    var(--color-slate-900) 90%,
+    transparent
+  );
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-black relative;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeInTo 0.15s ease-out;
+  animation-fill-mode: both;
+  animation-delay: 0.075s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.99) translateY(5px);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.95) translateY(5px);
+  }
+}
+
+@keyframes fadeInTo {
+  from {
+    opacity: 0;
+    transform: scale(0.99) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.box {
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -500px;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: all 1s ease-out;
+    background: var(--color-orange-100);
+    animation: spin 6s linear infinite;
+  }
+  &:has(.gold:hover) {
+    &::before {
+      background: linear-gradient(
+        25deg,
+        var(--color-orange-100),
+        var(--color-orange-500)
+      );
+      opacity: 0.1;
+    }
+  }
+}
+a {
+  position: relative;
+  &::after {
+    content:;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .fade-in-delay {
+    animation-duration: 0s !important;
+  }
+
+  .box::before {
+    animation: none !important;
+    transition-duration: 0s !important;
+  }
+}
+@keyframes spin {
+  to {
+    rotate: 360deg;
   }
 }
