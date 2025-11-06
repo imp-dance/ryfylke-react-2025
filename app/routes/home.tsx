@@ -44,7 +44,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "image",
       property: "og:image",
-      content: "https://ryfylke.dev/static/og-image.jpg",
+      content: "https://ryfylke.dev/static/og-image.png",
     },
     {
       name: "url",
