@@ -27,10 +27,35 @@ import type { Route } from "./+types/home";
 gsap.registerPlugin(MorphSVGPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
+const pageDescription =
+  "Jeg utvikler brukergrensesnitt. Har du lyst på en modal? Noen knapper? Hva med en sykt kul nettside for bedriften din? Det kan jeg hjelpe deg med! Tidligere har jeg arbeidet på prosjekter sammen med kunder som Telenor og Neddi. Jeg har spesialisert meg på frontend nettutvikling og brukererfaring.";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Ryfylke React" },
-    { name: "description", content: "" },
+    {
+      name: "description",
+      content: pageDescription,
+    },
+    {
+      name: "title",
+      property: "og:title",
+      content: "Ryfylke React",
+    },
+    {
+      name: "image",
+      property: "og:image",
+      content: "https://ryfylke.dev/static/og-image.png",
+    },
+    {
+      name: "url",
+      property: "og:url",
+      content: "https://ryfylke.dev",
+    },
+    {
+      name: "description",
+      property: "og:description",
+      content: pageDescription,
+    },
   ];
 }
 
