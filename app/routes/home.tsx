@@ -148,12 +148,20 @@ export default function Home() {
             hjelpe deg med!
           </Text>
           <Text>
-            Tidligere har jeg arbeidet på prosjekter sammen med
-            kunder som{" "}
+            Tidligere har jeg arbeidet på prosjekter for firma
+            som{" "}
             <ExternalLink href="https://www.telenor.no/">
               Telenor
-            </ExternalLink>{" "}
-            og{" "}
+            </ExternalLink>
+            ,{" "}
+            <ExternalLink href="https://www.equinor.com/">
+              Equinor
+            </ExternalLink>
+            ,{" "}
+            <ExternalLink href="https://ndla.no/">
+              NDLA
+            </ExternalLink>
+            , og{" "}
             <ExternalLink href="https://neddi.no">
               Neddi
             </ExternalLink>
