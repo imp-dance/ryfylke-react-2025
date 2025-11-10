@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -28,23 +28,14 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-if (typeof document !== "undefined") {
-  document
-    .querySelector<HTMLDivElement>("body > div")
-    ?.style.setProperty("opacity", "0.3");
-}
-
 export function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document
-        .querySelector<HTMLDivElement>("body > div")
-        ?.style.setProperty("opacity", "1");
-    }
+    setLoaded(true);
   }, []);
   return (
     <html lang="en">
@@ -57,10 +48,22 @@ export function Layout({
         <Meta />
         <Links />
       </head>
-      <body>
+      <body
+        style={{
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.2s ease-out",
+        }}
+      >
         {children}
         <ScrollRestoration />
         <Scripts />
+        <noscript>
+          <style>
+            {`
+              opacity: 1 !important;
+            `}
+          </style>
+        </noscript>
       </body>
     </html>
   );
