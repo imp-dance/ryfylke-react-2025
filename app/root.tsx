@@ -60,7 +60,7 @@ export function Layout({
         <noscript>
           <style>
             {`
-              opacity: 1 !important;
+              body { opacity: 1 !important; }
             `}
           </style>
         </noscript>
